@@ -261,6 +261,18 @@ impl CapturableDisplay {
     pub fn rect(&self) -> Rect {
         self.impl_capturable_display.rect()
     }
+
+    #[cfg(target_os = "macos")]
+    pub fn id(&self) -> u32 {
+        //qzd1989
+        self.impl_capturable_display.display.raw_id()
+    }
+
+    #[cfg(target_os = "windows")]
+    pub fn id(&self) -> u32 {
+        //qzd1989
+        self.impl_capturable_display.0 .0 as u32
+    }
 }
 
 unsafe impl Send for CapturableDisplay {}

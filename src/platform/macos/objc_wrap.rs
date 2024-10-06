@@ -2059,7 +2059,7 @@ impl CGDisplayStream {
         }).copy();
         unsafe {
             let pixel_format = pixel_format.to_ostype();
-            let display_id = CGMainDisplayID();
+            // let display_id = CGMainDisplayID(); //qzd1989
             let stream_ref = CGDisplayStreamCreateWithDispatchQueue(display_id, size.0, size.1, pixel_format.as_i32(), std::ptr::null_mut(), dispatch_queue.0, &*callback_block as *const _ as *const c_void);
             Self {
                 stream_ref,
